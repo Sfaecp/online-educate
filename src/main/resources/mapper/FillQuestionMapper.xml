@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.llh.education.onlineeducate.mapper.FillQuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.llh.education.onlineeducate.entity.FillQuestionEntity">
+            <id column="id" property="id"/>
+                <result column="code" property="code"/>
+                <result column="content" property="content"/>
+                <result column="result" property="result"/>
+                <result column="analysis" property="analysis"/>
+                <result column="grade_course" property="gradeCourse"/>
+                <result column="difficulty" property="difficulty"/>
+                <result column="create_time" property="createTime"/>
+                <result column="update_time" property="updateTime"/>
+                <result column="create_id" property="createId"/>
+            </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+            id,            code,            content,            result,            analysis,            grade_course,            difficulty,            create_time,            update_time,            create_id        </sql>
+
+    <!-- 详情-根据主键查详情 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_fill_question
+        WHERE id = #{id}
+    </select>
+
+    <!-- 插入-全字段 -->
+    <insert id="insert" parameterType="com.llh.education.onlineeducate.entity.FillQuestionEntity">
+        INSERT INTO t_llh_fill_question (
+            <include refid="Base_Column_List" />
+        )VALUES (
+                        #{id},                        #{code},                        #{content},                        #{result},                        #{analysis},                        #{gradeCourse},                        #{difficulty},                        #{createTime},                        #{updateTime},                        #{createId}                    )
+     </insert>
+
+    <!-- 插入-可选字段 -->
+    <insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.FillQuestionEntity">
+        INSERT INTO t_llh_fill_question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test="null != id">
+                id,
+            </if>
+                        <if test="null != code">
+                code,
+            </if>
+                        <if test="null != content">
+                content,
+            </if>
+                        <if test="null != result">
+                result,
+            </if>
+                        <if test="null != analysis">
+                analysis,
+            </if>
+                        <if test="null != gradeCourse">
+                grade_course,
+            </if>
+                        <if test="null != difficulty">
+                difficulty,
+            </if>
+                        <if test="null != createTime">
+                create_time,
+            </if>
+                        <if test="null != updateTime">
+                update_time,
+            </if>
+                        <if test="null != createId">
+                create_id,
+            </if>
+                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+                        <if test="null != id">
+                #{id},
+            </if>
+                        <if test="null != code">
+                #{code},
+            </if>
+                        <if test="null != content">
+                #{content},
+            </if>
+                        <if test="null != result">
+                #{result},
+            </if>
+                        <if test="null != analysis">
+                #{analysis},
+            </if>
+                        <if test="null != gradeCourse">
+                #{gradeCourse},
+            </if>
+                        <if test="null != difficulty">
+                #{difficulty},
+            </if>
+                        <if test="null != createTime">
+                #{createTime},
+            </if>
+                        <if test="null != updateTime">
+                #{updateTime},
+            </if>
+                        <if test="null != createId">
+                #{createId},
+            </if>
+                    </trim>
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO t_llh_fill_question (
+        <include refid="Base_Column_List" /> )
+        <foreach collection="list" item="item" separator="union all" index="index">
+            <trim suffixOverrides=",">
+            select                 #{item.id},
+                            #{item.code},
+                            #{item.content},
+                            #{item.result},
+                            #{item.analysis},
+                            #{item.gradeCourse},
+                            #{item.difficulty},
+                            #{item.createTime},
+                            #{item.updateTime},
+                            #{item.createId},
+                        </trim>
+        <if test="_databaseId == 'oracle'"> from dual </if>
+        </foreach>
+    </insert>
+
+    <!-- 更新-可选字段 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.FillQuestionEntity">
+        UPDATE t_llh_fill_question
+        <set>
+                                        <if test="null != code">
+            code = #{code},
+        </if>
+                                <if test="null != content">
+            content = #{content},
+        </if>
+                                <if test="null != result">
+            result = #{result},
+        </if>
+                                <if test="null != analysis">
+            analysis = #{analysis},
+        </if>
+                                <if test="null != gradeCourse">
+            grade_course = #{gradeCourse},
+        </if>
+                                <if test="null != difficulty">
+            difficulty = #{difficulty},
+        </if>
+                                <if test="null != createTime">
+            create_time = #{createTime},
+        </if>
+                                <if test="null != updateTime">
+            update_time = #{updateTime},
+        </if>
+                                <if test="null != createId">
+            create_id = #{createId},
+        </if>
+                        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 更新-全字段 -->
+    <update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.FillQuestionEntity">
+        UPDATE t_llh_fill_question
+        <set>
+                                                            code = #{code},                                                content = #{content},                                                result = #{result},                                                analysis = #{analysis},                                                grade_course = #{gradeCourse},                                                difficulty = #{difficulty},                                                create_time = #{createTime},                                                update_time = #{updateTime},                                                create_id = #{createId}                                </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 查实体-通过map集合 -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM t_llh_fill_question
+        WHERE delete_flag = 0
+    </select>
+
+    <!-- 查列表-通过map集合查询 -->
+    <select id="listByMap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM t_llh_fill_question
+        WHERE delete_flag = 0
+                        <if test="null != cm.id">
+            AND id = #{cm.id}
+        </if>
+                                <if test="null != cm.code">
+            AND code = #{cm.code}
+        </if>
+                                <if test="null != cm.content">
+            AND content = #{cm.content}
+        </if>
+                                <if test="null != cm.result">
+            AND result = #{cm.result}
+        </if>
+                                <if test="null != cm.analysis">
+            AND analysis = #{cm.analysis}
+        </if>
+                                <if test="null != cm.gradeCourse">
+            AND grade_course = #{cm.gradeCourse}
+        </if>
+                                <if test="null != cm.difficulty">
+            AND difficulty = #{cm.difficulty}
+        </if>
+                                <if test="null != cm.createTime">
+            AND create_time = #{cm.createTime}
+        </if>
+                                <if test="null != cm.updateTime">
+            AND update_time = #{cm.updateTime}
+        </if>
+                                <if test="null != cm.createId">
+            AND create_id = #{cm.createId}
+        </if>
+                    </select>
+
+    <!--查列表-通过对象查询-->
+    <select id="listByEntity" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_fill_question
+        WHERE delete_flag = 0
+                        <if test="null != et.id">
+            AND id = #{et.id}
+        </if>
+                                <if test="null != et.code">
+            AND code = #{et.code}
+        </if>
+                                <if test="null != et.content">
+            AND content = #{et.content}
+        </if>
+                                <if test="null != et.result">
+            AND result = #{et.result}
+        </if>
+                                <if test="null != et.analysis">
+            AND analysis = #{et.analysis}
+        </if>
+                                <if test="null != et.gradeCourse">
+            AND grade_course = #{et.gradeCourse}
+        </if>
+                                <if test="null != et.difficulty">
+            AND difficulty = #{et.difficulty}
+        </if>
+                                <if test="null != et.createTime">
+            AND create_time = #{et.createTime}
+        </if>
+                                <if test="null != et.updateTime">
+            AND update_time = #{et.updateTime}
+        </if>
+                                <if test="null != et.createId">
+            AND create_id = #{et.createId}
+        </if>
+                        ORDER BY create_time DESC
+    </select>
+
+    <!--查列表-通过主键id集合查询-->
+    <select id="listByBatchIds" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_fill_question
+        WHERE id IN
+        <foreach close=")" collection="coll" index="index" item="id" open="(" separator=",">
+            #{id}
+        </foreach>
+        ORDER BY create_time DESC
+    </select>
+
+</mapper>

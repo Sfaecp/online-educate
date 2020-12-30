@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.llh.education.onlineeducate.mapper.AnswerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.llh.education.onlineeducate.entity.AnswerEntity">
+            <id column="id" property="id"/>
+                <result column="q_id" property="qId"/>
+                <result column="s_id" property="sId"/>
+                <result column="flag" property="flag"/>
+                <result column="term" property="term"/>
+                <result column="create_time" property="createTime"/>
+            </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+            id,            q_id,            s_id,            flag,            term,            create_time        </sql>
+
+    <!-- 详情-根据主键查详情 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_answer
+        WHERE id = #{id}
+    </select>
+
+    <!-- 插入-全字段 -->
+    <insert id="insert" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+        INSERT INTO t_llh_answer (
+            <include refid="Base_Column_List" />
+        )VALUES (
+                        #{id},                        #{qId},                        #{sId},                        #{flag},                        #{term},                        #{createTime}                    )
+     </insert>
+
+    <!-- 插入-可选字段 -->
+    <insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+        INSERT INTO t_llh_answer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test="null != id">
+                id,
+            </if>
+                        <if test="null != qId">
+                q_id,
+            </if>
+                        <if test="null != sId">
+                s_id,
+            </if>
+                        <if test="null != flag">
+                flag,
+            </if>
+                        <if test="null != term">
+                term,
+            </if>
+                        <if test="null != createTime">
+                create_time,
+            </if>
+                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+                        <if test="null != id">
+                #{id},
+            </if>
+                        <if test="null != qId">
+                #{qId},
+            </if>
+                        <if test="null != sId">
+                #{sId},
+            </if>
+                        <if test="null != flag">
+                #{flag},
+            </if>
+                        <if test="null != term">
+                #{term},
+            </if>
+                        <if test="null != createTime">
+                #{createTime},
+            </if>
+                    </trim>
+    </insert>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO t_llh_answer (
+        <include refid="Base_Column_List" /> )
+        <foreach collection="list" item="item" separator="union all" index="index">
+            <trim suffixOverrides=",">
+            select                 #{item.id},
+                            #{item.qId},
+                            #{item.sId},
+                            #{item.flag},
+                            #{item.term},
+                            #{item.createTime},
+                        </trim>
+        <if test="_databaseId == 'oracle'"> from dual </if>
+        </foreach>
+    </insert>
+
+    <!-- 更新-可选字段 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+        UPDATE t_llh_answer
+        <set>
+                                        <if test="null != qId">
+            q_id = #{qId},
+        </if>
+                                <if test="null != sId">
+            s_id = #{sId},
+        </if>
+                                <if test="null != flag">
+            flag = #{flag},
+        </if>
+                                <if test="null != term">
+            term = #{term},
+        </if>
+                                <if test="null != createTime">
+            create_time = #{createTime},
+        </if>
+                        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 更新-全字段 -->
+    <update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+        UPDATE t_llh_answer
+        <set>
+                                                            q_id = #{qId},                                                s_id = #{sId},                                                flag = #{flag},                                                term = #{term},                                                create_time = #{createTime}                                </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 查实体-通过map集合 -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM t_llh_answer
+        WHERE delete_flag = 0
+    </select>
+
+    <!-- 查列表-通过map集合查询 -->
+    <select id="listByMap" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM t_llh_answer
+        WHERE delete_flag = 0
+                        <if test="null != cm.id">
+            AND id = #{cm.id}
+        </if>
+                                <if test="null != cm.qId">
+            AND q_id = #{cm.qId}
+        </if>
+                                <if test="null != cm.sId">
+            AND s_id = #{cm.sId}
+        </if>
+                                <if test="null != cm.flag">
+            AND flag = #{cm.flag}
+        </if>
+                                <if test="null != cm.term">
+            AND term = #{cm.term}
+        </if>
+                                <if test="null != cm.createTime">
+            AND create_time = #{cm.createTime}
+        </if>
+                    </select>
+
+    <!--查列表-通过对象查询-->
+    <select id="listByEntity" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_answer
+        WHERE delete_flag = 0
+                        <if test="null != et.id">
+            AND id = #{et.id}
+        </if>
+                                <if test="null != et.qId">
+            AND q_id = #{et.qId}
+        </if>
+                                <if test="null != et.sId">
+            AND s_id = #{et.sId}
+        </if>
+                                <if test="null != et.flag">
+            AND flag = #{et.flag}
+        </if>
+                                <if test="null != et.term">
+            AND term = #{et.term}
+        </if>
+                                <if test="null != et.createTime">
+            AND create_time = #{et.createTime}
+        </if>
+                        ORDER BY create_time DESC
+    </select>
+
+    <!--查列表-通过主键id集合查询-->
+    <select id="listByBatchIds" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_llh_answer
+        WHERE id IN
+        <foreach close=")" collection="coll" index="index" item="id" open="(" separator=",">
+            #{id}
+        </foreach>
+        ORDER BY create_time DESC
+    </select>
+
+</mapper>
