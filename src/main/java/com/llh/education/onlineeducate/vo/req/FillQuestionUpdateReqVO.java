@@ -29,7 +29,6 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = false)
 public class FillQuestionUpdateReqVO extends FillQuestionBaseReqVO{
 
-    @NotNull(message = "主键id不能为空")
     @ApiModelProperty(value = "主键id",required = true)
-    private Long id;
+    private String id;
 }

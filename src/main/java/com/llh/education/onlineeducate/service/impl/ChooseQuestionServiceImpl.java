@@ -50,7 +50,7 @@ public class ChooseQuestionServiceImpl implements ChooseQuestionService {
     @Override
     public ChooseQuestionBaseReqVO querySingleQuestion(ChooseQuestionQryReqVO chooseQuestionQryReqVO) {
         ChooseQuestionEntity chooseReq = new ChooseQuestionEntity();
-        chooseReq.setId(chooseQuestionQryReqVO.getId());
+       chooseReq.setId(chooseQuestionQryReqVO.getId());
         chooseReq.setCode(chooseQuestionQryReqVO.getCode());
         chooseReq.setGradeCourse(chooseQuestionQryReqVO.getGradeCourse());
         ChooseQuestionEntity cq = chooseQuestionMapper.querySingleQuestion(chooseReq);

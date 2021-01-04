@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.lbx.mall.order.mapper")
+@MapperScan(basePackages = "com.llh.education.onlineeducate.mapper")
 public class OnlineEducateApplication {
 
 	public static void main(String[] args) {

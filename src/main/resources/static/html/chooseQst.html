@@ -3,16 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        function clkBtn() {
-            var t1 = document.getElementById("text1");
-            t1.value = "测试111";
-        }
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type:"post",
+                url: "/education/choosequestion/querySingleQuestion",
+                async:true,
+                data: "{\"code\":\"p1f0001\"}",//JSON.stringify(data),//后台接受时使用了@RequestBody注解，需要Json字符串和指定contentType
+                contentType:"application/json;charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    alert("数据准备: successful");
+                    console.log(data);
+                    var result = data.data;
+                    $("#question").html(result.content);
+                    $("#opt_a").html(result.optionA);
+                    $("#opt_b").html(result.optionB);
+                    $("#opt_c").html(result.optionC);
+                    $("#opt_d").html(result.optionD);
+                }
+            });
+
+        });
+
     </script>
 </head>
 <body>
+
 <div id="div1">
-<input type="text" id="text1" value="测试前"/>
+    <span id="mark">选择题</span>
+    <br>
+    <span id="question"></span>
+    <br>
+    <input type="radio" id="radioA" name="option"><span id="opt_a"></span>
+    <br>
+    <input type="radio" id="radioB" name="option"><span id="opt_b"></span>
+    <br>
+    <input type="radio" id="radioC" name="option"><span id="opt_c"></span>
+    <br>
+    <input type="radio" id="radioD" name="option"><span id="opt_d"></span>
 
 </div>
 <input type="button" id="bt1" value="按钮" onclick="clkBtn()">

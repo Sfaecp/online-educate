@@ -18,22 +18,22 @@
             id,            q_id,            s_id,            flag,            term,            create_time        </sql>
 
     <!-- 详情-根据主键查详情 -->
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+   <!-- <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
         FROM t_llh_answer
         WHERE id = #{id}
-    </select>
+    </select>-->
 
     <!-- 插入-全字段 -->
-    <insert id="insert" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+   <!-- <insert id="insert" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
         INSERT INTO t_llh_answer (
             <include refid="Base_Column_List" />
         )VALUES (
                         #{id},                        #{qId},                        #{sId},                        #{flag},                        #{term},                        #{createTime}                    )
-     </insert>
+     </insert>-->
 
     <!-- 插入-可选字段 -->
-    <insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+    <!--<insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
         INSERT INTO t_llh_answer
         <trim prefix="(" suffix=")" suffixOverrides=",">
                         <if test="null != id">
@@ -75,7 +75,7 @@
                 #{createTime},
             </if>
                     </trim>
-    </insert>
+    </insert>-->
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO t_llh_answer (
@@ -94,7 +94,7 @@
     </insert>
 
     <!-- 更新-可选字段 -->
-    <update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+    <!--<update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
         UPDATE t_llh_answer
         <set>
                                         <if test="null != qId">
@@ -114,22 +114,17 @@
         </if>
                         </set>
         WHERE id = #{id}
-    </update>
+    </update>-->
 
     <!-- 更新-全字段 -->
-    <update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
+    <!--<update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.AnswerEntity">
         UPDATE t_llh_answer
         <set>
                                                             q_id = #{qId},                                                s_id = #{sId},                                                flag = #{flag},                                                term = #{term},                                                create_time = #{createTime}                                </set>
         WHERE id = #{id}
-    </update>
+    </update>-->
 
-    <!-- 查实体-通过map集合 -->
-    <select id="selectOne" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM t_llh_answer
-        WHERE delete_flag = 0
-    </select>
+
 
     <!-- 查列表-通过map集合查询 -->
     <select id="listByMap" resultMap="BaseResultMap">

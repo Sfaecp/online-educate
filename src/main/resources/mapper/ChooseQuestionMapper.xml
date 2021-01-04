@@ -40,22 +40,22 @@
      </sql>
 
     <!-- 详情-根据主键查详情 -->
-    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
         FROM t_llh_choose_question
         WHERE id = #{id}
-    </select>
+    </select>-->
 
     <!-- 插入-全字段 -->
-    <insert id="insert" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
+    <!--<insert id="insert" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
         INSERT INTO t_llh_choose_question (
             <include refid="Base_Column_List" />
         )VALUES (
                         #{id},                        #{code},                        #{content},                        #{optionA},                        #{optionB},                        #{optionC},                        #{optionD},                        #{result},                        #{analysis},                        #{difficulty},                        #{gradeCourse},                        #{createTime},                        #{updateTime},                        #{createId}                    )
      </insert>
-
+-->
     <!-- 插入-可选字段 -->
-    <insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
+    <!--<insert id="insertSelective" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
         INSERT INTO t_llh_choose_question
         <trim prefix="(" suffix=")" suffixOverrides=",">
                         <if test="null != id">
@@ -145,7 +145,7 @@
                 #{createId},
             </if>
                     </trim>
-    </insert>
+    </insert>-->
 
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO t_llh_choose_question (
@@ -172,7 +172,7 @@
     </insert>
 
     <!-- 更新-可选字段 -->
-    <update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
+    <!--<update id="updateByPrimaryKeySelective" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
         UPDATE t_llh_choose_question
         <set>
                                         <if test="null != code">
@@ -216,10 +216,10 @@
         </if>
                         </set>
         WHERE id = #{id}
-    </update>
+    </update>-->
 
     <!-- 更新-全字段 -->
-    <update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
+   <!-- <update id="updateByPrimaryKey" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity">
         UPDATE t_llh_choose_question
         <set>
              code = #{code},                                                
@@ -237,7 +237,7 @@
               create_id = #{createId}                                
         </set>
         WHERE id = #{id}
-    </update>
+    </update>-->
     <select id="querySingleQuestion" parameterType="com.llh.education.onlineeducate.entity.ChooseQuestionEntity" resultMap="BaseResultMap">
         SELECT
             id,

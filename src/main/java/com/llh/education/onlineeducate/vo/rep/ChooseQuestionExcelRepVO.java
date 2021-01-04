@@ -1,19 +1,11 @@
-/****************************************************
- * 系统名称： 债券多级托管系统
- * 工程名称: 在线试题
- * 公司名称: 深圳市赢时胜信息技术股份有限公司
- *
- * All rights Reserved, Designed By 赢时胜软件
- * @Copyright:2016-2020
- *
- ********************************************************/
+
 package com.llh.education.onlineeducate.vo.rep;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.win.bmtp.common.util.vo.rep.BaseExcelRepVO;
 
 import java.math.BigDecimal;
 
@@ -28,7 +20,7 @@ import java.math.BigDecimal;
 @ApiModel(value="t_llh_choose_question导出对象", description="选择题试题表导出对象")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ChooseQuestionExcelRepVO extends BaseExcelRepVO {
+public class ChooseQuestionExcelRepVO  {
 
 	private static final long serialVersionUID = 1L;
 

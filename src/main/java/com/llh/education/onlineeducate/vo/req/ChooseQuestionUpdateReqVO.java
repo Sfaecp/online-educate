@@ -30,5 +30,5 @@ import java.math.BigDecimal;
 public class ChooseQuestionUpdateReqVO extends ChooseQuestionBaseReqVO{
 
     @ApiModelProperty(value = "主键id",required = true)
-    private Long id;
+    private String id;
 }

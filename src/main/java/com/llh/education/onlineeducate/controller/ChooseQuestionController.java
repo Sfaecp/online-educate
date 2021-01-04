@@ -1,18 +1,10 @@
-/****************************************************
- * 系统名称： 债券多级托管系统
- * 工程名称: 在线试题
- * 公司名称: 深圳市赢时胜信息技术股份有限公司
- *
- * All rights Reserved, Designed By 赢时胜软件
- * @Copyright:2016-2020
- *
- ********************************************************/
-
+package com.llh.education.onlineeducate.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.llh.education.onlineeducate.common.ComResponse;
 import com.llh.education.onlineeducate.service.ChooseQuestionService;
 import com.llh.education.onlineeducate.vo.req.ChooseQuestionBaseReqVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +32,7 @@ import com.llh.education.onlineeducate.vo.rep.ChooseQuestionRepVO;
 @RequestMapping("/education/choosequestion")
 public class ChooseQuestionController {
 
+    @Autowired
     private ChooseQuestionService chooseQuestionService;
 
     /**
